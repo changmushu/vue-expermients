@@ -25,5 +25,19 @@ export const useFoodsStore = defineStore('foods', {
                 this.count[index]--;
             }
         },
+        updateSelected(index: number) {
+            const selected = this.selected;
+            if (this.count[index] === 0) {
+                const idx = index;
+                if (idx !== -1) {
+                    selected.splice(idx, 1);
+                }
+            } else {
+                if (!selected.includes(index)) {
+                    selected.push(index);
+                }
+            }
+            this.selected = selected;
+        }
     }
 })
